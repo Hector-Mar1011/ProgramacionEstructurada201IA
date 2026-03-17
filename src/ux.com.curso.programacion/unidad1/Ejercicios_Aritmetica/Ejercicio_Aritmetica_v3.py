@@ -14,9 +14,18 @@ def mostrar_funciones(numero):
 
     print("El resultado de sen^2(x) + cos^2(x) es:", resultado)
 
+def calculo_tangente(numero):
+
+    Tan_x = math.tan(numero)
+    
+    print("la tangente de", numero, "es", Tan_x)
+    
+
+
 def main():
     numero = float(input("Ingrese un número: "))
     mostrar_funciones(numero)
+    calculo_tangente(numero)
    
     
     
