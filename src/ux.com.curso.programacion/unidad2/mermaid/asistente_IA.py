@@ -11,13 +11,13 @@ def UMBRAL():
 
     Nivel_Confianza = float(input("Ingrese el nivel de confianza: "))
 
-    if Nivel_Confianza >= UMBRAL_ALTO:
+    if Nivel_Confianza >= UMBRAL_ALTO and Nivel_Confianza <95.0:
         print(Instruccion,"¡Instrucción Exitosa!")
     
     elif Nivel_Confianza > UMBRAL_MINIMO and Nivel_Confianza < UMBRAL_ALTO:
         print("Confianza insuficiente. ¿se refiere a?", Instruccion, ",Por favor confirme.")
 
-    elif Nivel_Confianza > 95.0:
+    elif Nivel_Confianza >= 95.0:
         print(Instruccion,"¡Instrucción Exitosa!","Aviso: El modelo ha sido reforzado con éxito debido a la alta precisión.")   
     
     else:
