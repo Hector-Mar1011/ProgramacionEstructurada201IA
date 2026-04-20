@@ -62,7 +62,7 @@ def generar_reporte(total_datos, validos, estadisticas):
     print(f"Lecturas descartadas: {descartados}")
     print(f"Valor máximo: {v_max}")
     print(f"Valor mínimo: {v_min}")
-    print(f"Promedio: {promedio}")
+    print(f"Promedio: {v_prom}")
     print("*" * 30)
 
 
