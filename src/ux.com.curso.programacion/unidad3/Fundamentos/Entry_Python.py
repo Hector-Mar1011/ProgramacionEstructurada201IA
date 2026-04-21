@@ -50,7 +50,7 @@ def pregunta_8():
     y = 2
     print(x // y )
 
-def pregunta_9():
+def pregunta_9():   
     val = 10
     val += 5 * 2
     print(val)
