@@ -31,11 +31,12 @@ def validar_fecha(anno, mes, dia):
     return True
 
 def main():
-    anno = anno()
-    mes = mes()
-    dia = dia()
-while True:
-        if validar_fecha(anno, mes, dia):
+    
+    while True:
+        a = anno()
+        m = mes()
+        d = dia()
+        if validar_fecha(a, m, d):
             print("La fecha es válida.")
             break
         else:
