@@ -43,16 +43,7 @@ def procesar_pregunta(mensaje_usuario):
         "type": "Función que se utiliza para obtener el tipo de un objeto.",
         "range": "Función que se utiliza para generar una secuencia de números.",
 
-        #Conceptos de estructura de control
 
-        #Tipos de datos
-        
-        #Funciones y modularidad
-
-        #Operadores y sintaxis
-
-        #Conceptos de programación estrucurada 
-        
     }
 
     for clave in conocimiento:
