@@ -42,6 +42,17 @@ def procesar_pregunta(mensaje_usuario):
         "len": "Función que se utiliza para obtener la longitud de un objeto.",
         "type": "Función que se utiliza para obtener el tipo de un objeto.",
         "range": "Función que se utiliza para generar una secuencia de números.",
+
+        #Conceptos de estructura de control
+
+        #Tipos de datos
+        
+        #Funciones y modularidad
+
+        #Operadores y sintaxis
+
+        #Conceptos de programación estrucurada 
+        
     }
 
     for clave in conocimiento:
