@@ -1,0 +1,36 @@
+import statistics
+Historial_errores = []
+Umbral_convergencia = float(0.50)
+
+
+def REGISTRAR_EPOCA(self,valor_error):
+    if valor_error < Umbral_convergencia:
+        print("[SISTEMA] entrenamiento completado: se alcanzó el objetivo de presición")
+        Historial_errores.append(valor_error)
+
+
+while len(Historial_errores) < 5:
+    valor_error = float(input("Ingresa el valor del error para 5 epocas distintas: "))
+    REGISTRAR_EPOCA(None, valor_error)
+
+    if valor_error == str():
+        ValueError("Error: el valor ingresado no es un número válido.")
+        break
+    elif valor_error < 0:
+        print("Error: el valor ingresado no puede ser negativo.")
+        break
+    
+print("Historial de errores:", Historial_errores)       
+# Calculo del promedio de errores
+promedio_error = statistics.mean(Historial_errores)
+print("Promedio de errores:", promedio_error)
+print("El mejor error fue:", min(Historial_errores))
+
+
+
+def main():
+    pass    
+
+if __name__ == "__main__":    
+    
+    main()    
