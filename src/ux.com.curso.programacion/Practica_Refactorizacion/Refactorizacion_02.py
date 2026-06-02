@@ -1,7 +1,7 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte II)
-Alumno: [Tu Nombre]
+Alumno: [Héctor Luis Garcia Marthen]
 """
 import random  # Única librería importada por el novato
 
@@ -42,6 +42,12 @@ def limpiar_nombre_usuario(nombre_sucio):
         return primera_letra + resto_cadena
     return ""
 
+def limpiar_nombre_usuario_refactorizado(nombre_sucio):
+    # Uso de métodos nativos de strings para limpiar y formatear el nombre
+    nombre_limpio = nombre_sucio.strip()  # Elimina espacios al inicio y final
+    return nombre_limpio.capitalize()       # Pone la primera letra en mayúscula y el resto en minúscula
+
+
 # =====================================================================
 # RETO 2: Buscador de Palabras Prohibidas (Filtro contra Groserías)
 # Sentido: Banear o censurar mensajes inapropiados en el chat del servidor.
@@ -63,6 +69,10 @@ def contiene_palabra_bloqueada(mensaje_chat, palabra_prohibida):
             
     return False
 
+def contiene_palabra_bloqueada_refactorizado(mensaje_chat, palabra_prohibida):
+    # Uso de la función "in" para verificar si la palabra prohibida está en el mensaje
+    return palabra_prohibida in mensaje_chat
+
 # =====================================================================
 # RETO 3: Generador de Contraseñas Temporales para Nuevos Usuarios
 # Sentido: Asignar una clave alfanumérica segura al registrar un agente.
@@ -78,6 +88,12 @@ def generar_clave_temporal():
         caracter_elegido = caracteres_validos[indice_aleatorio]
         clave_generada = clave_generada + caracter_elegido # Concatenación repetitiva
         
+    return clave_generada
+
+def generar_clave_temporal_refactorizado():
+    caracteres_validos = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"
+    # Uso de una comprensión de lista y join para generar la clave de manera más eficiente
+    clave_generada = ''.join(random.choice(caracteres_validos) for _ in range(8))
     return clave_generada
 
 # =====================================================================
@@ -108,17 +124,38 @@ def calcular_mediana_latencia(lista_pings):
         mitad2 = pings_ordenados[n // 2]
         return (mitad1 + mitad2) / 2.0
 
+def calcular_mediana_latencia_refactorizado(lista_pings):
+    # Uso de la función sorted para ordenar la lista y calcular la mediana de forma más directa
+    pings_ordenados = sorted(lista_pings)
+    n = len(pings_ordenados)
+    
+    if n % 2 == 1:
+        return pings_ordenados[n // 2]
+    else:
+        mitad1 = pings_ordenados[(n // 2) - 1]
+        mitad2 = pings_ordenados[n // 2]
+        return (mitad1 + mitad2) / 2.0
+
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
     print("--- Probando Código Inicial (Parte II) ---")
     
     print("Usuario limpio:", [limpiar_nombre_usuario("   luNA_eDUaRDo  ")])
+
+    print("Usuario limpio refactorizado:", [limpiar_nombre_usuario_refactorizado("   luNA_eDUaRDo  ")])
     
     msg = "No digas malas palabras en este servidor"
     print("¿Tiene groserías?:", contiene_palabra_bloqueada(msg, "malas"))
+
+    print("¿Tiene groserías? (Refactorizado):", contiene_palabra_bloqueada_refactorizado(msg, "malas"))
+
     
     print("Clave generada por el sistema:", generar_clave_temporal())
-    
+
+    print("Clave generada refactorizada:", generar_clave_temporal_refactorizado())  
+
     pings_servidor = [120, 45, 80, 23, 150, 62]
     print("Mediana de latencia encontrada:", calcular_mediana_latencia(pings_servidor))
+
+    print("Mediana de latencia refactorizada:", calcular_mediana_latencia_refactorizado(pings_servidor))
