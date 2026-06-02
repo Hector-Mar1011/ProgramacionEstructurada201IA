@@ -1,10 +1,10 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código
-Alumno: [Tu Nombre]
+Alumno: [Héctor Luis Garcia Marthen]
 """
 import random  # Única librería importada por el novato
-
+import math    
 # =====================================================================
 # RETO 1: El Teorema de Fermat
 # Sentido: Validar la famosa conjetura matemática.
@@ -17,6 +17,15 @@ def verificar_fermat(a, b, c):
             print("¡Fermat se equivocó!")
         else:
             print("No, esa combinación no funciona.")
+
+#Primera refactorización: Agregar el exponente como parámetro para mayor flexibilidad y se reduce la repetición de código.
+def verificar_Fermat_Refactorizado(a, b, c, n):
+    if n>2:
+        if math.pow(a, n) + math.pow(b, n) == math.pow(c, n):
+            print("¡Fermat se equivocó!")
+        else:
+            print("No, esa combinación no funciona.")
+
 
 # =====================================================================
 # RETO 2: Distancia Euclidiana entre dos puntos (Agente e IA)
@@ -33,6 +42,15 @@ def calcular_distancia(x1, y1, x2, y2):
     # Intento manual de sacar raíz cuadrada elevando a la 0.5
     distancia = suma_cuadrados ** 0.5 
     return distancia
+
+# Refactorización: Uso de funciones matemáticas estándar para claridad y precisión usando math para potencia y raíz cuadrada, lo que mejora la legibilidad y reduce errores potenciales. Además, se agrega una versión con math.hypot para una solución aún más directa.
+def calcular_distancia_refactorizada(x1, y1, x2, y2):
+    return math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+
+
+def calcular_distancia_refactorizada_v2(x1, y1, x2, y2):
+    return math.hypot(x2 - x1, y2 - y1) #Funcion especifica para distancia euclidiana entre dos puntos
+
 
 # =====================================================================
 # RETO 3: Selector Aleatorio de Respuestas para el Bot
@@ -51,6 +69,17 @@ def obtener_saludo_agente():
         return "Sistemas en línea. Monitoreando el servidor."
     elif opcion == 4:
         return "Hola humano, procesando tus peticiones."
+
+# Refactorización: Uso de una lista de saludos y selección aleatoria directa, lo que simplifica el código y facilita la adición o modificación de respuestas en el futuro.
+def obtener_saludo_agente_refactorizado():
+    saludos = [
+        "Hola, soy el agente de IA. ¿En qué ayudo?",
+        "¡Conexión establecida! Listo para operar.",
+        "Sistemas en línea. Monitoreando el servidor.",
+        "Hola humano, procesando tus peticiones."
+    ]
+    return random.choice(saludos)
+
 
 # =====================================================================
 # RETO 4: Clasificador de Alertas Críticas (Validación de Rangos)
@@ -77,6 +106,9 @@ def evaluar_error_sistema(valor_loss):
 if __name__ == "__main__":
     print("--- Probando Código Inicial ---")
     verificar_fermat(3, 4, 5)
+    verificar_Fermat_Refactorizado(3, 4, 5, 4)
     print("Distancia calculada:", calcular_distancia(0, 0, 3, 4))
+    print("Distancia refactorizada:", calcular_distancia_refactorizada(0, 0, 3, 4))
+    print("Distancia refactorizada v2:", calcular_distancia_refactorizada_v2(0, 0, 3, 4))
     print("Respuesta bot:", obtener_saludo_agente())
     print("Estado del log:", evaluar_error_sistema(0.85))
